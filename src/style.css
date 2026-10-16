@@ -1,3 +1,14 @@
+
+[hidden] {
+  display: none !important;
+}
+
+.modal-overlay[hidden],
+.modal-backdrop[hidden],
+.canvas-overlay[hidden] {
+  display: none !important;
+}
+
 :root {
   --bg-main: #0f1015;
   --bg-surface: #181920;

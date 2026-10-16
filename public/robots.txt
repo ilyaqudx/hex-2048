@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hexagonal-2048.vercel.app/sitemap.xml
+Sitemap: https://hex-2048-nu.vercel.app/sitemap.xml

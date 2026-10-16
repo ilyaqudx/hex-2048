@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hexagonal-2048.vercel.app/sitemap.xml

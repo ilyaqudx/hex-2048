@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="1l2_RiYCAmp7s6J2NHcgw_LJhvbjY_CoSzl1ZSu_Lws" />
+  <title>2048 Hexagonal - Play Hex 2048 Online Free & Unblocked</title>
+  <meta name="description" content="Play 2048 Hexagonal (Hex 2048) online for free! Slide numbered tiles in 6 hexagonal directions, combine matching numbers, and reach the 2048 hex tile. Fast, lightweight, unblocked on Chromebooks.">
+  <meta name="keywords" content="2048 hexagonal, hex 2048, 2048 hexagon, 2048 6 directions, 2048 unblocked, play 2048 online, 2048 math puzzle">
+  <link rel="canonical" href="https://hexagonal-2048.vercel.app/">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2048 Hexagonal - Play Hex 2048 Online Free">
+  <meta property="og:description" content="Slide numbered hexagonal tiles in 6 directions, merge numbers, and reach the 2048 tile in this addictive geometric puzzle.">
+  <meta property="og:url" content="https://hexagonal-2048.vercel.app/">
+  <meta property="og:image" content="https://hexagonal-2048.vercel.app/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2048 Hexagonal - Online Free & Unblocked">
+  <meta name="twitter:description" content="Challenge your spatial logic with 6-way hexagonal tile merging. Play instantly in browser.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://hexagonal-2048.vercel.app/#app",
+        "name": "2048 Hexagonal",
+        "url": "https://hexagonal-2048.vercel.app/",
+        "applicationCategory": "GameApplication",
+        "genre": "Puzzle",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires HTML5 Canvas/SVG support",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "2048 Hexagonal is a 6-directional geometric evolution of the classic 2048 puzzle game played on a honeycomb hexagonal grid."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://hexagonal-2048.vercel.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is 2048 Hexagonal different from classic 2048?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Classic 2048 only allows sliding in 4 orthogonal directions (Up, Down, Left, Right). 2048 Hexagonal takes place on a honeycomb grid and expands movement to 6 directions (↗, →, ↘, ↙, ←, ↖), dramatically increasing strategic depth and spatial possibilities."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the controls for 2048 Hexagonal?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can play using keyboard keys (Q for top-left, W/E for top-right, D for right, X/C for bottom-right, Z/S for bottom-left, A for left), touch/swipe gestures on mobile screens, or by clicking the on-screen 6-direction compass buttons."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is 2048 Hexagonal unblocked for school Chromebooks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 2048 Hexagonal runs 100% client-side in pure HTML5 and JavaScript without ads, popups, or server logins, making it completely unblocked on school and workplace networks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I undo a mistaken move in Hex 2048?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Click the Undo button or press the 'U' key on your keyboard to revert up to 5 previous moves."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://hexagonal-2048.vercel.app/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://hexagonal-2048.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "2048 Hexagonal",
+            "item": "https://hexagonal-2048.vercel.app/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <span class="brand-icon">⬢</span>
+          <div class="brand-text">
+            <span class="brand-title">2048 HEXAGONAL</span>
+            <span class="brand-badge">6-WAY PUZZLE</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button id="btn-sound" class="icon-btn" title="Toggle Audio" aria-label="Audio Toggle">
+            <span id="sound-icon">🔊</span>
+          </button>
+          <button id="btn-help" class="icon-btn" title="How to Play" aria-label="Help">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Game Area -->
+    <main class="main-content">
+      <div class="game-container">
+        <!-- Scores Row -->
+        <div class="scores-row">
+          <div class="score-box">
+            <div class="label">Score</div>
+            <div id="score-val" class="value">0</div>
+          </div>
+          <div class="score-box highlight">
+            <div class="label">Best</div>
+            <div id="best-score-val" class="value">0</div>
+          </div>
+        </div>
+
+        <!-- Actions Row -->
+        <div class="actions-row">
+          <div class="btn-group">
+            <button id="btn-new-game" class="btn primary">🔄 New Game</button>
+            <button id="btn-undo" class="btn" title="Undo Move (U)">↩️ Undo</button>
+          </div>
+
+          <div class="mode-selector" aria-label="Board Size Mode">
+            <button class="mode-btn active" data-radius="2">Classic (19)</button>
+            <button class="mode-btn" data-radius="3">Expanded (37)</button>
+          </div>
+        </div>
+
+        <!-- Hexagonal Board SVG -->
+        <div class="board-wrapper" id="board-wrapper">
+          <svg id="hex-board-svg" aria-label="2048 Hexagonal Interactive Game Board"></svg>
+        </div>
+
+        <!-- 6-Direction D-Pad Controls for Mobile & Quick Taps -->
+        <div class="compass-wrapper">
+          <span class="compass-label">6-Direction Compass (or Swipe / Q-W-E-A-S-D):</span>
+          <div class="hex-compass">
+            <button class="compass-btn" data-dir="TOP_LEFT" title="Top-Left (Q / 7)">↖</button>
+            <button class="compass-btn" data-dir="TOP_RIGHT" title="Top-Right (W / 9)">↗</button>
+            <button class="compass-btn" data-dir="RIGHT" title="Right (D / 6)">→</button>
+            <button class="compass-btn" data-dir="BOTTOM_RIGHT" title="Bottom-Right (X / 3)">↘</button>
+            <button class="compass-btn" data-dir="BOTTOM_LEFT" title="Bottom-Left (Z / 1)">↙</button>
+            <button class="compass-btn" data-dir="LEFT" title="Left (A / 4)">←</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Educational & Strategy Section -->
+      <section class="seo-section">
+        <article class="seo-card">
+          <h1>2048 Hexagonal: The 6-Direction Geometric Puzzle</h1>
+          <p>Welcome to <strong>2048 Hexagonal</strong> (also known as <em>Hex 2048</em>), an evolutionary leap of the world-famous sliding tile math puzzle. By breaking free from the traditional 4-directional square grid into an organic <strong>6-directional honeycomb matrix</strong>, 2048 Hexagonal introduces dynamic diagonal cascades, unexpected chain reactions, and deeper tactical foresight.</p>
+
+          <h2>🎮 How to Play 2048 Hexagonal</h2>
+          <ul>
+            <li><strong>Slide in 6 Directions</strong>: Swipe in any of the 6 hexagonal directions (↖, ↗, →, ↘, ↙, ←) using touch gestures, mouse dragging, or keyboard hotkeys.</li>
+            <li><strong>Merge Identical Numbers</strong>: When two hex tiles of the same value collide along the movement axis, they seamlessly fuse into a single tile with double the value (e.g., 2+2=4, 4+4=8, 1024+1024=2048).</li>
+            <li><strong>Every Move Matters</strong>: After every successful slide, a new random tile (2 or 4) spawns in an empty cell.</li>
+            <li><strong>The Ultimate Goal</strong>: Merge and build your way up to construct the legendary <strong>2048</strong> champion tile—and continue onward to 4096 and 8192!</li>
+          </ul>
+
+          <h2>🧠 Top Strategies to Master Hex 2048</h2>
+          <div class="strategy-grid">
+            <div class="strategy-item">
+              <h4>1. The Edge Anchor Rule</h4>
+              <p>Keep your largest tile anchored along an outer edge or corner. Avoid bouncing it into the center where smaller tiles will encircle and trap it.</p>
+            </div>
+            <div class="strategy-item">
+              <h4>2. Build Cascading Gradients</h4>
+              <p>Organize numbers in descending staircases (e.g., 256 next to 128, next to 64). When a merge occurs, it triggers an instant chain reaction.</p>
+            </div>
+            <div class="strategy-item">
+              <h4>3. Master the 3 Diagonal Axes</h4>
+              <p>Hex coordinates operate on three axes. Choose two primary axes to slide along and reserve the third axis exclusively for critical merges.</p>
+            </div>
+            <div class="strategy-item">
+              <h4>4. Use Undo Strategically</h4>
+              <p>Don't let a stray swipe ruin your high-score run! Click Undo (or press 'U') to recover from an accidental slide.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- FAQ Section -->
+        <article class="seo-card">
+          <h2>❓ Frequently Asked Questions (FAQ)</h2>
+          <div class="faq-list">
+            <details open>
+              <summary>How do the keyboard controls work for 6 directions?</summary>
+              <p>On standard QWERTY keyboards, you can use <b>Q</b> (top-left ↖), <b>W</b> / <b>E</b> (top-right ↗), <b>D</b> (right →), <b>X</b> / <b>C</b> (bottom-right ↘), <b>Z</b> / <b>S</b> (bottom-left ↙), and <b>A</b> (left ←). You can also use the Numpad (7, 9, 6, 3, 1, 4) or arrow keys.</p>
+            </details>
+            <details>
+              <summary>What is the difference between Classic (19) and Expanded (37) mode?</summary>
+              <p>Classic mode uses a radius-2 honeycomb grid with 19 hex cells, offering a fast-paced, high-stakes tactical game. Expanded mode expands to radius 3 with 37 cells, providing ample maneuvering space for marathon runs targeting 4096, 8192, and beyond.</p>
+            </details>
+            <details>
+              <summary>Is 2048 Hexagonal unblocked for school Chromebooks?</summary>
+              <p>Yes! 2048 Hexagonal is completely unblocked. It runs 100% in your local browser with zero server latency, no Flash, and no downloads required.</p>
+            </details>
+            <details>
+              <summary>Does 2048 Hexagonal save my best score?</summary>
+              <p>Yes, your highest score for both Classic and Expanded modes is automatically saved locally in your browser storage so you can track your personal records across sessions.</p>
+            </details>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="modal-victory" class="modal-overlay" hidden>
+      <div class="modal-card">
+        <div class="modal-icon">🏆</div>
+        <h3 class="modal-title">You Reached 2048!</h3>
+        <p class="modal-desc">Congratulations! You conquered the hexagonal honeycomb and created the legendary 2048 tile.</p>
+        <div class="modal-actions">
+          <button id="btn-keep-playing" class="btn primary">Keep Playing</button>
+          <button id="btn-restart-win" class="btn">New Game</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-gameover" class="modal-overlay" hidden>
+      <div class="modal-card">
+        <div class="modal-icon">💀</div>
+        <h3 class="modal-title">Game Over!</h3>
+        <p class="modal-desc">No more valid slides remaining on the hexagonal board. Give it another try!</p>
+        <div class="modal-actions">
+          <button id="btn-restart-loss" class="btn primary">Play Again</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-help" class="modal-overlay" hidden>
+      <div class="modal-card">
+        <div class="modal-icon">📖</div>
+        <h3 class="modal-title">How to Play Hex 2048</h3>
+        <p class="modal-desc">Slide tiles in 6 directions using touch swipes, Q-W-E-A-S-D keyboard keys, or the D-Pad. When two identical numbers collide, they fuse into one!</p>
+        <div class="modal-actions">
+          <button class="btn primary modal-close">Got It!</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Matrix Reciprocal Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="matrix-title">🎮 More Free Online Games (SEO Matrix)</div>
+        <div class="matrix-grid">
+          <a href="https://hexagonal-2048.vercel.app" class="matrix-link current">
+            <span>⬢</span> 2048 Hexagonal
+          </a>
+          <a href="https://seo-game-website.vercel.app" class="matrix-link" target="_blank" rel="noopener">
+            <span>🔷</span> Hextris Unblocked
+          </a>
+          <a href="https://waffle-game-unlimited.vercel.app" class="matrix-link" target="_blank" rel="noopener">
+            <span>🧇</span> Waffle Game Unlimited
+          </a>
+          <a href="https://falling-sand-game-one.vercel.app" class="matrix-link" target="_blank" rel="noopener">
+            <span>⏳</span> Falling Sand Simulator
+          </a>
+        </div>
+        <p class="footer-copy">© 2026 2048 Hexagonal · Free, Lightweight & Unblocked HTML5 Browser Games</p>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
